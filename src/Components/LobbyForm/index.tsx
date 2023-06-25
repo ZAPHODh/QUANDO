@@ -1,15 +1,24 @@
 import { useEffect, useState } from 'react';
 import { MaxQuantity } from '../MaxQuantity';
+
 import * as Styled from './styles';
 import { Description } from '../Description';
 import { Cards } from '../Cards';
+import { useRouter } from 'next/navigation';
+import { generateUniqueId } from '@/utils/generateUniqueId';
+import { useNewLobby } from '@/context/newLobby';
 
 export const LobbyForm = () => {
-  const [players, setPlayers] = useState(1);
-  const [rounds, setRounds] = useState(1);
-  const [selectedTheme, setSelectedTheme] = useState('');
+  const {
+    players,
+    setPlayers,
+    rounds,
+    selectedTheme,
+    setRounds,
+    setSelectedTheme,
+  } = useNewLobby();
   const [abbleToSend, setAbbleToSend] = useState(false);
-
+  const router = useRouter();
   // verify if the user selected the game mode
   useEffect(() => {
     if (selectedTheme === '') return;
@@ -41,7 +50,9 @@ export const LobbyForm = () => {
     setSelectedTheme(themeName);
   };
   const handleCreateLobby = () => {
-    console.log(players, rounds, selectedTheme);
+    if (!players || !rounds || !selectedTheme) return;
+    const uniqueId = generateUniqueId();
+    router.push(`/lobby/${uniqueId}`);
   };
   return (
     <Styled.Wrapper>

@@ -18,7 +18,9 @@ export const Card = ({
   return (
     <Styled.Wrapper onClick={onClick} selected={selected}>
       {Icon}
-      <Heading as="h4">{theme}</Heading>
+      <Heading as="h4" isButton>
+        {theme}
+      </Heading>
     </Styled.Wrapper>
   );
 };

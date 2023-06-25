@@ -1,5 +1,7 @@
+import { Chat } from '@/Components/Chat';
 import { LobbyForm } from '@/Components/LobbyForm';
 import { Menu } from '@/Components/Menu';
+
 import Head from 'next/head';
 
 export default function Home() {
@@ -14,6 +16,7 @@ export default function Home() {
       <main>
         <Menu></Menu>
         <LobbyForm />
+        <Chat></Chat>
       </main>
     </>
   );

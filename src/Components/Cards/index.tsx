@@ -2,6 +2,7 @@ import { Card } from '../Card';
 import * as Styled from './styles';
 import { SelectIcon } from './utils/SelectIcon';
 import { v4 as uuid } from 'uuid';
+import AddIcon from '@mui/icons-material/Add';
 export type theme = {
   name: string;
   icon: string;
@@ -36,6 +37,12 @@ export const Cards = ({
           ></Card>
         );
       })}
+      <Card
+        selected={selectedTheme === 'new'}
+        theme="Criar tema"
+        Icon={<AddIcon />}
+        onClick={() => handleCardClick('new')}
+      ></Card>
     </Styled.Wrapper>
   );
 };
